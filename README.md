@@ -1,2 +1,17 @@
-# crisparra-azure-portfolio
-Azure Administrator portfolio: AZ-104 hands-on labs, notes, diagrams, and best practices (RBAC, VNets, Storage, Monitoring).
+# Cris Parra — Azure Administrator Portfolio (AZ-104)
+
+This repository documents my hands-on Azure labs and projects aligned with AZ-104.
+Each lab includes steps, screenshots (sanitized), troubleshooting notes, and cleanup to control costs.
+
+## Skills covered
+- Microsoft Entra ID (Azure AD), RBAC
+- Virtual Networks (VNets), NSGs
+- Storage accounts (Blob/File), access control
+- Monitoring (Azure Monitor, alerts, Log Analytics)
+- Cost management & resource cleanup
+
+## Labs
+- [Lab 01 — Entra ID Identities](./labs/01-entra-id-identities) *(in progress)*
+
+## Notes
+All examples are sanitized (no secrets, subscription IDs, tenant IDs, or personal data).
