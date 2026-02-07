@@ -11,7 +11,8 @@ Each lab includes steps, screenshots (sanitized), troubleshooting notes, and cle
 - Cost management & resource cleanup
 
 ## Labs
-- [Lab 01 — Entra ID Identities](./labs/01-entra-id-identities) *(in progress)*
+- ✅ [Lab 01 — Entra ID Identities](./labs/01-entra-id-identities)
+
 
 ## Notes
 All examples are sanitized (no secrets, subscription IDs, tenant IDs, or personal data).
