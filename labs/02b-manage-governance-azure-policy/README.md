@@ -58,3 +58,7 @@ In this lab, I implemented governance controls using **Azure Policy**, **resourc
 - **Azure Policy** enforces standards (Deny) and can remediate resources (Modify).
 - **Remediation tasks** help bring existing resources into compliance.
 - **Resource locks** prevent accidental deletion/modification.
+
+## Cleanup
+
+- [cleanup.md](./cleanup.md)
