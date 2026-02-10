@@ -56,3 +56,7 @@ Se asignó el rol **Help Desk Operator** al grupo **helpdesk** a nivel del manag
 
 ## Notas
 Se aplicó ocultamiento/difuminado de datos sensibles (IDs, correos, tenant/subscription IDs).
+
+## Cleanup
+See: [cleanup.md](cleanup.md)
+
