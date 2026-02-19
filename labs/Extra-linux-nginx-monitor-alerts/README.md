@@ -1,6 +1,6 @@
 # Extra Lab - Linux VM + Nginx + Azure Monitor + Alertas (AZ-104)
 
-> Portal de Azure en **español** | Nivel: Intermedio | Enfoque: VM + Red (NSG) + Monitorización + Alertas + Cleanup
+> Portal de Azure en **español** | Nivel: Intermedio | Enfoque: VM Linux + NSG + Nginx + Monitorización + Alertas + Cleanup
 
 ---
 
@@ -32,13 +32,14 @@ Desplegar una **máquina virtual Linux (Ubuntu)** en Azure, publicar un servicio
 ## Arquitectura
 
 **Recursos y componentes**
-- Resource Group
-- Virtual Machine (Ubuntu 24.04 LTS)
+- Grupo de recursos
+- Máquina virtual (Ubuntu)
 - Network Security Group (NSG)
 - Nginx (servidor web)
 - Azure Advisor
 - Azure Monitor (Métricas)
 - Azure Alerts (regla CPU)
+- Limpieza: eliminación del RG
 
 ---
 
@@ -57,22 +58,20 @@ Desplegar una **máquina virtual Linux (Ubuntu)** en Azure, publicar un servicio
 
 ## 1) Crear VM Linux (Ubuntu)
 
-1. En el portal: **Crear un recurso** → **Máquina virtual**
-2. Selecciona:
+1. Portal: **Crear un recurso** → **Máquina virtual**
+2. Configura:
    - **Suscripción**: tu suscripción de prueba
    - **Grupo de recursos**: el de este lab
    - **Nombre**: `MaquinaVirtuallab1`
    - **Región**: `México Central`
-   - **Imagen**: `Ubuntu Server 24.04 LTS - Gen2`
+   - **Imagen**: Ubuntu (como en tu despliegue)
    - **Autenticación**: `Clave pública SSH`
    - **Puertos de entrada**: `SSH (22)` permitido
 3. **Revisar y crear** → **Crear**
-4. Descarga la clave privada cuando el portal la ofrezca.
+4. Descarga la clave privada SSH cuando el portal lo pida.
 
 📸 **Captura**
-- Resumen “Revisar y crear” de la VM:
-
-![VM - Review + Create](images/01_ReviewCreate_VM_Summary.png)
+![VM Summary](images/01_ReviewCreate_VM_Summary.png)
 
 ---
 
@@ -80,34 +79,34 @@ Desplegar una **máquina virtual Linux (Ubuntu)** en Azure, publicar un servicio
 
 Objetivo: permitir que el navegador llegue a Nginx usando **HTTP (80/TCP)**.
 
-1. En la VM: **Redes** → **Reglas de puerto de entrada**
-2. Crea una regla (ACL del puerto) para **TCP/80**:
+1. En la VM: **Redes** → **Configuración de red**
+2. En **Reglas de puerto de entrada** agrega una regla para **TCP/80**:
    - **Puerto de destino**: `80`
    - **Protocolo**: `TCP`
    - **Acción**: `Permitir`
-   - **Nombre**: por ejemplo `accesohttp` o `AccesoHTTP`
    - **Prioridad**: una libre (ej. 310)
+   - **Nombre**: (ej. `accesohttp`)
 
 📸 **Capturas**
-- Vista general de reglas de red / NSG asociado:
+- Vista general de reglas / networking:
+![Networking Rules Overview](images/02_VM_Networking_Rules_Overview.png)
 
-![NSG Overview](images/02_VM_Networking_Rules_Overview.png)
+- Formulario agregando regla HTTP:
+![Add Inbound Security Rule HTTP80](images/03_Add_Inbound_SecurityRule_HTTP80.png)
 
-- Formulario agregando la regla de entrada para HTTP:
+- Confirmación / campos de la regla:
+![Inbound Rule HTTP80 Fields](images/04_Inbound_Rule_HTTP80_Fields.png)
 
-![Add Inbound Rule](images/03_Add_Inbound_SecurityRule_HTTP80.png)
-
-- Regla creada en la lista:
-
-![Inbound Rule Created](images/04_Inbound_Rule_HTTP80_Created.png)
+> ✅ Nota: antes te fallaba “Inbound rule created” porque el README apuntaba a un archivo que no existía.  
+> Aquí ya está corregido usando tu nombre real: `04_Inbound_Rule_HTTP80_Fields.png`
 
 ---
 
 ## 3) Conectarse por SSH e instalar Nginx
 
-### 3.1 Conexión SSH desde PowerShell (ejemplo)
+### 3.1 Conexión SSH (ejemplo)
 En el portal: **Conectar** → **SSH nativo** → copia el comando.
 
-Ejemplo (ajusta ruta de tu .pem y la IP):
+Ejemplo:
 ```bash
 ssh -i C:\Users\TU_USUARIO\Downloads\TU_CLAVE.pem azureuser@TU_IP_PUBLICA
