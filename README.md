@@ -16,7 +16,7 @@ Each lab includes steps, screenshots (sanitized), troubleshooting notes, and cle
 - ✅ [Lab 02b - Manage Governance via Azure Policy](./labs/02b-manage-governance-azure-policy/README.md)
 - ✅ [Lab 03 — Manage Azure Resources (ARM, CLI & Bicep)](./labs/03-manage-azure-resources/README.md)
 - ✅ [Lab 04 — Manage Virtual Networking](labs/04-manage-virtual-networking/README.md)
-
+- ✅ [Extra Lab — Linux VM + Nginx + Azure Monitor + Alertas](./labs/Extra-linux-nginx-monitor-alerts/README.md)
 
 ## Notes
 All examples are sanitized (no secrets, subscription IDs, tenant IDs, or personal data).
